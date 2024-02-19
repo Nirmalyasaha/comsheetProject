@@ -1,7 +1,8 @@
-import { FetchAllState, FetchBrand, FetchLease, FetchPropertytype, FetchRegion, FetchSubPropertytype, FetchTenancy } from "@/api/compsFunction/compsFN";
-import { Autocomplete, Box, Grid, TextField } from "@mui/material";
-import { title } from "process";
+import { FetchAllState, FetchBrand, FetchCreaditList, FetchLease, FetchPropertytype, FetchRegion, FetchSubPropertytype, FetchTenancy } from "@/api/compsFunction/compsFN";
+import { Autocomplete, Box, Button, Grid, TextField } from "@mui/material";
 import { useQuery } from "react-query";
+import styles from '@/styles/addComp.module.css'
+import '@/styles/addComp.module.css'
 
 
 
@@ -13,7 +14,7 @@ export default function AddComp() {
 
     ////  property Types--------start----
 
-    const { data: PropertyData, error } = useQuery({
+   const { data: PropertyData, error } = useQuery({
         queryKey: ["ADD Comps"],
         queryFn: FetchPropertytype
     });
@@ -108,7 +109,7 @@ export default function AddComp() {
         queryKey: ["REGION"],
         queryFn: FetchRegion
     });
-   // console.log("region res", regionData)
+    // console.log("region res", regionData)
 
     const RegionResData = regionData?.map((reg) => {
         return {
@@ -117,48 +118,65 @@ export default function AddComp() {
 
         }
     })
-/////////////END-----------
+    /////////////END-----------
 
-///////// LEASES START-----
-
-
-const {data:leaseData}=useQuery({
-    queryKey:["LEASE"],
-    queryFn:FetchLease
-   
-});
-console.log("lease data",leaseData)
+    ///////// LEASES START-----
 
 
-const leaseResData=leaseData?.map((les)=>{
-    return {
+    const { data: leaseData } = useQuery({
+        queryKey: ["LEASE"],
+        queryFn: FetchLease
+
+    });
+    //console.log("lease data",leaseData)
+
+
+    const leaseResData = leaseData?.map((les) => {
+        return {
             ...les,
-            id:les._id
+            id: les._id
 
-    }
-})
+        }
+    })
 
+    //// END ------
 
+    /////////// CREADIYT LIST START---------
+
+    const { data: CreditList } = useQuery({
+        queryKey: ["CREDIT"],
+        queryFn: FetchCreaditList
+    });
+
+    console.log("Credit list data:", CreditList)
+
+    const CreditResdata = CreditList?.map((Cre) => {
+        return {
+            ...Cre,
+            id: Cre._id
+
+        }
+    })
 
 
 
 
     return (
         <>
-            <Box>
-                <h1>Add Comps</h1>
+            <Box  className={styles.heading}>
+                <h1 >Add Comps</h1>
             </Box>
             <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={2}>
-                    <Grid item xs={6}>
+                    <Grid item xs={6} className={styles?.form1}>
                         <Box>
                             {PropertyResData ? (
                                 <Autocomplete
                                     disablePortal
                                     id="combo-box-demo"
+                                    sx={{width:"400px" }}
                                     options={PropertyResData}
                                     getOptionLabel={(option) => option?.title}
-                                    sx={{ width: 200 }}
                                     renderInput={(params) => <TextField  {...params} label="PropertyTypes" />}
                                 />
                             ) : (<></>)}
@@ -171,7 +189,7 @@ const leaseResData=leaseData?.map((les)=>{
                                     id="combo-box-demo"
                                     options={subRESData}
                                     getOptionLabel={(rr) => rr?.title}
-                                    sx={{ width: 200 }}
+                                    sx={{width:"400px"}}
                                     renderInput={(params) => <TextField  {...params} label="Sub PropertyTypes" />}
                                 />
                             ) : (<></>)}
@@ -183,13 +201,13 @@ const leaseResData=leaseData?.map((les)=>{
                                     id="combo-box-demo"
                                     options={TenancyResData}
                                     getOptionLabel={(rr) => rr?.title}
-                                    sx={{ width: 200 }}
+                                    sx={{width:"400px"}}
                                     renderInput={(params) => <TextField  {...params} label="Tenancy" />}
                                 />
                             ) : (<></>)}
                         </Box>
                         <Box>
-                            <TextField label="Property Name"/>
+                            <TextField label="Property Name"  sx={{width:"400px"}}/>
                         </Box>
                         <Box>
                             {StateRESData ? (
@@ -198,20 +216,20 @@ const leaseResData=leaseData?.map((les)=>{
                                     id="combo-box-demo"
                                     options={StateRESData}
                                     getOptionLabel={(rr) => rr?.title}
-                                    sx={{ width: 200 }}
+                                    sx={{width:"400px"}}
                                     renderInput={(params) => <TextField  {...params} label="State" />}
                                 />
                             ) : (<></>)}
                         </Box>
-                        
+
                         <Box>
                             {BrandResData ? (
                                 <Autocomplete
-                                    disablePortal
+                                   
                                     id="combo-box-demo"
                                     options={BrandResData}
                                     getOptionLabel={(br) => br?.title}
-                                    sx={{ width: 200 }}
+                                    sx={{width:"400px"}}
                                     renderInput={(params) => <TextField  {...params} label="Tenant Brand" />}
                                 />
                             ) : (<></>)}
@@ -223,56 +241,91 @@ const leaseResData=leaseData?.map((les)=>{
                                     id="combo-box-demo"
                                     options={RegionResData}
                                     getOptionLabel={(option) => option?.title}
-                                    sx={{ width: 200 }}
+                                    sx={{width:"400px"}}
                                     renderInput={(params) => <TextField  {...params} label="Region " />}
                                 />
                             ) : (<></>)}
                         </Box>
                         <Box>
-                            {leaseData? (
+                            {leaseResData ? (
                                 <Autocomplete
                                     disablePortal
                                     id="combo-box-demo"
-                                    options={leaseData}
+                                    options={leaseResData}
                                     getOptionLabel={(option) => option?.title}
-                                    sx={{ width: 200 }}
+                                    sx={{width:"400px"}}
                                     renderInput={(params) => <TextField  {...params} label="Lease Type" />}
                                 />
                             ) : (<></>)}
                         </Box>
-                        </Grid>
+                        <Box>
+                            {CreditResdata ? (
+                                <Autocomplete
+                                    disablePortal
+                                    id="combo-box-demo"
+                                    options={CreditResdata}
+                                    getOptionLabel={(option) => option?.title}
+                                    sx={{width:"400px"}}
+                                    renderInput={(params) => <TextField  {...params} label="Credit " />}
+                                />
+                            ) : (<></>)}
+                        </Box>
+                        <Box>
+                            <TextField label="NOI*" sx={{width:"400px"}} />
+                        </Box>
 
-                        <Grid item  xs={6}>
-                            <Box>
-                               <TextField label="Units Of tenants"/>                             
-                            </Box>
-                            <Box>
-                                <TextField label="Vacancy"/>
-                            </Box>
-                            <Box>
-                                <TextField label="Traffic" />
-                            </Box>
-                            <Box>
-                                <TextField label="Pop 1 Mile"/>
-                            </Box>
-                            <Box>
-                                <TextField label="Pop 3 Mile"/>
-                            </Box>
-                            <Box>
-                                <TextField label="Pop 5 Mile"/>
-                            </Box>
-                           
-                            <Box>
-                                <TextField label="HH 1 Mile"/>
-                            </Box>
-                            <Box>
-                                <TextField label="HH 3 Mile"/>
-                            </Box>
-                            <Box>
-                                <TextField label="HH 5 Mile"/>
-                            </Box>
-                        </Grid>
-                    
+                        <Box>
+                            <TextField type="date" label="Lease Start" focused sx={{width:"400px"}} />
+                        </Box>
+
+                        <Box>
+                            <TextField type="date" label="Lease End" focused sx={{width:"400px"}} />
+                        </Box>
+
+
+                    </Grid>
+
+                    <Grid item xs={6} className={styles?.form1}>
+                        <Box>
+                            <TextField label="Units Of tenants"  sx={{width:"400px"}} />
+                        </Box>
+                        <Box>
+                            <TextField label="Vacancy" sx={{width:"400px"}}/>
+                        </Box>
+                        <Box>
+                            <TextField label="Traffic" sx={{width:"400px"}}/>
+                        </Box>
+                        <Box>
+                            <TextField label="Pop 1 Mile"sx={{width:"400px"}} />
+                        </Box>
+                        <Box>
+                            <TextField label="Pop 3 Mile" sx={{width:"400px"}}/>
+                        </Box>
+                        <Box>
+                            <TextField label="Pop 5 Mile" sx={{width:"400px"}} />
+                        </Box>
+
+                        <Box>
+                            <TextField label="HH 1 Mile" sx={{width:"400px"}} />
+                        </Box>
+                        <Box>
+                            <TextField label="HH 3 Mile"  sx={{width:"400px"}}/>
+                        </Box>
+                        <Box>
+                            <TextField label="HH 5 Mile" sx={{width:"400px"}}/>
+                        </Box>
+                        <Box>
+                            <TextField label="List Cap Rate" sx={{width:"400px"}}/>
+                        </Box>
+                        <Box>
+                            <TextField label="Close Cap Rate" sx={{width:"400px"}}/>
+                        </Box>
+
+                        <Box>
+                            <Button >SUBMIT</Button>
+                        </Box>
+                    </Grid>
+
 
                 </Grid>
 

@@ -6,6 +6,7 @@ import { LogInData } from "@/api/functions/functions";
 import { useAppSelector } from "@/hooks/redux/useappSelector";
 import { useDispatch } from "react-redux";
 import { setLogInData } from "@/redux-toolkit/authSlice/authSlice";
+import { setCookieClient } from "@/lib/lib.util";
 
 
 type Inputs = {
@@ -30,12 +31,14 @@ export default function LogIN() {
   const onSubmit = (data: Inputs) => {
     LogInData(data).then((resp) => {
       console.log(resp)
-        if (resp?.status === 200) {
+      if (resp?.status === 200) {
         disPatch(setLogInData({
           userData: resp.data,
           accessToken: resp.token
+        })) /// log in success
 
-        }))
+        setCookieClient("accessToken",resp.token)
+        // token colect
       }
 
 
@@ -63,14 +66,19 @@ export default function LogIN() {
     //   noValidate
     //   autoComplete="off"
     // >
-    <form onSubmit={handleSubmit(onSubmit)}>
+      <Box className={styles.loginform}>
+             <h2>Log In</h2>
+      
 
-      <TextField id="outlined-basic" label="Email Id" variant="outlined"{...register("email")} />
+       <form onSubmit={handleSubmit(onSubmit)}>
 
-      <TextField id="outlined-basic" label="Password" variant="outlined"{...register("password")} />
+        <TextField id="outlined-basic" label="Email Id" variant="outlined"{...register("email")} />
 
-      <input type="submit" />
-    </form>
+        <TextField id="outlined-basic" label="Password" variant="outlined"{...register("password")} />
+
+        <input type="submit" />
+      </form>
+    </Box>
 
   )
 }

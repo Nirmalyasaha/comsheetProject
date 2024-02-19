@@ -8,6 +8,7 @@ import { TenancyTypes } from "@/interFace/tenancy"
 import { BrandTypes } from "@/interFace/Brand"
 import { Regiontypes } from "@/interFace/Region"
 import { LeaseTypes } from "@/interFace/leaseType"
+import { CreditTypes } from "@/interFace/CreditList"
 
 
 
@@ -25,7 +26,6 @@ export const FetchSubPropertytype=async ()=>{
     return res?.data.data
 }
 
-
 export const FetchAllState=async()=>{
     const res =await axiosInstance.get<StateTypes>(endpoint.CompsAdd.state)
    // console.log("state Responce",res)
@@ -37,22 +37,27 @@ export const FetchTenancy=async ()=>{
     //console.log ("tenancy res:",res)
     return res?.data?.data
 }
- export const FetchBrand=async ()=>{
+
+export const FetchBrand=async ()=>{
     const res =await axiosInstance.get<BrandTypes>(endpoint.CompsAdd.tenantBrand)
    // console.log("brand ::",res)
     return res?.data.data
  }
- export const FetchRegion=async ()=>{
+export const FetchRegion=async ()=>{
     const res = await axiosInstance.get<Regiontypes>(endpoint.CompsAdd.region)
     //console.log ("region wise data",res)
     return res?.data.data
  }
 export const FetchLease=async()=>{
     const res = await axiosInstance.get<LeaseTypes>(endpoint.CompsAdd.lease)
-    console.log("lease res:",res)
+    //console.log("lease res:",res)
     return res?.data.data
 }
 
-
+export const FetchCreaditList=async()=>{
+    const res = await axiosInstance.get<CreditTypes>(endpoint.CompsAdd.creadit)
+    console.log("credit Res:",res)
+    return res?.data.data
+}
 
 
