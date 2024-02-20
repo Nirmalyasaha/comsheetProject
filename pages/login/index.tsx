@@ -7,6 +7,7 @@ import { useAppSelector } from "@/hooks/redux/useappSelector";
 import { useDispatch } from "react-redux";
 import { setLogInData } from "@/redux-toolkit/authSlice/authSlice";
 import { setCookieClient } from "@/lib/lib.util";
+import { Button } from "@mui/material";
 
 
 type Inputs = {
@@ -70,13 +71,13 @@ export default function LogIN() {
              <h2>Log In</h2>
       
 
-       <form onSubmit={handleSubmit(onSubmit)}>
+       <form onSubmit={handleSubmit(onSubmit)} className={styles.formgroup}>
 
-        <TextField id="outlined-basic" label="Email Id" variant="outlined"{...register("email")} />
+        <TextField id="outlined-basic" label="Email Id" variant="outlined"{...register("email")} sx={{width:300,marginBottom:"10px",}}/>
 
-        <TextField id="outlined-basic" label="Password" variant="outlined"{...register("password")} />
+        <TextField id="outlined-basic" label="Password" variant="outlined"{...register("password")} sx={{width:300}} />
 
-        <input type="submit" />
+        <Button variant="contained" className={styles.btn} type="submit">SUBMIT</Button>
       </form>
     </Box>
 

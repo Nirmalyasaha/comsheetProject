@@ -1,0 +1,23 @@
+.grand{
+   
+    width: 100%;
+    height: 100%;
+    /* background-color: rgb(228, 238, 238); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.parent{
+    width: 40%;
+    background-color: rgb(223, 226, 226);
+    text-align: center;
+    border-radius: 10px!;
+    box-shadow: 6px 8px 10px rgb(36, 35, 35);
+}
+.btn{
+    background: #000080;
+    border-radius: 45px;
+    padding: 15px 34px;
+    margin: 10px;
+}

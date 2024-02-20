@@ -6,6 +6,8 @@ import { SignUpData } from "@/api/functions/functions"
 
 import { setSIgnUpData } from "@/redux-toolkit/authSlice/authSlice"
 import { useRouter } from "next/router"
+import { Box, Button, TextField } from "@mui/material"
+import styles from '@/styles/signup.module.css'
 
 
 type Inputs = {
@@ -70,23 +72,29 @@ export default function SignUp() {
     return (
 
 
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <Box className={styles.grand}>
+            <Box className={styles.parent}>
+                <h1>Sign Up</h1>
 
-            <input type="test" placeholder="First Name" {...register("first_name")} />
+                <form onSubmit={handleSubmit(onSubmit)} >
 
-            <input type="test" placeholder="Last Name" {...register("last_name")} />
+                    <TextField placeholder="First Name" {...register("first_name")} sx={{ width: 230, padding: " 0 10px" }} />
 
-            <input type="test" placeholder="User Name" {...register("user_name")} />
+                    <TextField placeholder="Last Name" {...register("last_name")} sx={{ width: 230, }} />
 
-            <input type="test" placeholder="Email Id" {...register("email")} />
+                    <TextField placeholder="User Name" {...register("user_name")} sx={{ width: 230, padding: " 0 10px", margin: "10px 0" }} />
 
-            <input type="number" placeholder="Phone Number" {...register("phone")} />
+                    <TextField placeholder="Email Id" {...register("email")} sx={{ width: 230, margin: "10px 0" }} />
 
-            <input type="text" placeholder="Pass Word" {...register("password")} />
+                    <TextField placeholder="Phone Number" {...register("phone")} sx={{ width: 230, padding: " 0 10px" }} />
 
-            <input type="submit" />
+                    <TextField placeholder="Pass Word" {...register("password")} sx={{ width: 230, }} />
+
+                    <Button variant="contained" type="submit" className={styles.btn}>SUBMIT</Button>
 
 
-        </form>
+                </form>
+            </Box>
+        </Box>
     )
 }

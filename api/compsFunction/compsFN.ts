@@ -9,6 +9,8 @@ import { BrandTypes } from "@/interFace/Brand"
 import { Regiontypes } from "@/interFace/Region"
 import { LeaseTypes } from "@/interFace/leaseType"
 import { CreditTypes } from "@/interFace/CreditList"
+import { InputData } from "@/typeScript/type/add.type"
+import { AddCompTypes } from "@/interFace/addCompo"
 
 
 
@@ -56,8 +58,17 @@ export const FetchLease=async()=>{
 
 export const FetchCreaditList=async()=>{
     const res = await axiosInstance.get<CreditTypes>(endpoint.CompsAdd.creadit)
-    console.log("credit Res:",res)
+    //console.log("credit Res:",res)
     return res?.data.data
+}
+
+//// addd page func-----
+
+export const AddComp=async (payload:InputData,data:AddCompTypes)=>{
+    const res=await axiosInstance.post<AddCompTypes>(endpoint.CompsAdd.add,payload,data)
+    console.log("add res",res)
+    return res
+
 }
 
 

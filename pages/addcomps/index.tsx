@@ -14,7 +14,7 @@ export default function AddComp() {
 
     ////  property Types--------start----
 
-   const { data: PropertyData, error } = useQuery({
+    const { data: PropertyData, error } = useQuery({
         queryKey: ["ADD Comps"],
         queryFn: FetchPropertytype
     });
@@ -159,11 +159,10 @@ export default function AddComp() {
     })
 
 
-
-
     return (
         <>
-            <Box  className={styles.heading}>
+        <form >
+            <Box className={styles.heading}>
                 <h1 >Add Comps</h1>
             </Box>
             <Box sx={{ flexGrow: 1 }}>
@@ -174,7 +173,7 @@ export default function AddComp() {
                                 <Autocomplete
                                     disablePortal
                                     id="combo-box-demo"
-                                    sx={{width:"400px" }}
+                                    sx={{ width: "400px" }}
                                     options={PropertyResData}
                                     getOptionLabel={(option) => option?.title}
                                     renderInput={(params) => <TextField  {...params} label="PropertyTypes" />}
@@ -189,7 +188,7 @@ export default function AddComp() {
                                     id="combo-box-demo"
                                     options={subRESData}
                                     getOptionLabel={(rr) => rr?.title}
-                                    sx={{width:"400px"}}
+                                    sx={{ width: "400px" }}
                                     renderInput={(params) => <TextField  {...params} label="Sub PropertyTypes" />}
                                 />
                             ) : (<></>)}
@@ -201,13 +200,13 @@ export default function AddComp() {
                                     id="combo-box-demo"
                                     options={TenancyResData}
                                     getOptionLabel={(rr) => rr?.title}
-                                    sx={{width:"400px"}}
+                                    sx={{ width: "400px" }}
                                     renderInput={(params) => <TextField  {...params} label="Tenancy" />}
                                 />
                             ) : (<></>)}
                         </Box>
                         <Box>
-                            <TextField label="Property Name"  sx={{width:"400px"}}/>
+                            <TextField label="Property Name" sx={{ width: "400px" }} />
                         </Box>
                         <Box>
                             {StateRESData ? (
@@ -216,7 +215,7 @@ export default function AddComp() {
                                     id="combo-box-demo"
                                     options={StateRESData}
                                     getOptionLabel={(rr) => rr?.title}
-                                    sx={{width:"400px"}}
+                                    sx={{ width: "400px" }}
                                     renderInput={(params) => <TextField  {...params} label="State" />}
                                 />
                             ) : (<></>)}
@@ -225,11 +224,11 @@ export default function AddComp() {
                         <Box>
                             {BrandResData ? (
                                 <Autocomplete
-                                   
+
                                     id="combo-box-demo"
                                     options={BrandResData}
                                     getOptionLabel={(br) => br?.title}
-                                    sx={{width:"400px"}}
+                                    sx={{ width: "400px" }}
                                     renderInput={(params) => <TextField  {...params} label="Tenant Brand" />}
                                 />
                             ) : (<></>)}
@@ -241,10 +240,29 @@ export default function AddComp() {
                                     id="combo-box-demo"
                                     options={RegionResData}
                                     getOptionLabel={(option) => option?.title}
-                                    sx={{width:"400px"}}
+                                    sx={{ width: "400px" }}
                                     renderInput={(params) => <TextField  {...params} label="Region " />}
                                 />
                             ) : (<></>)}
+                        </Box>
+                        <Box>
+                            <TextField label="Country" sx={{ width: "400px" }} />
+                        </Box>
+                        <Box>
+                            <TextField label="Zip Code" sx={{ width: "400px" }} />
+                        </Box>
+
+                        <Box>
+                            <TextField label="List Cap Rate" sx={{ width: "400px" }} />
+                        </Box>
+                        <Box>
+                            <TextField label="Close Cap Rate" sx={{ width: "400px" }} />
+                        </Box>
+                        <Box>
+                            <TextField label="List Price" sx={{ width: "400px" }} />
+                        </Box>
+                        <Box>
+                            <TextField label="Sold Price" sx={{ width: "400px" }} />
                         </Box>
                         <Box>
                             {leaseResData ? (
@@ -253,7 +271,7 @@ export default function AddComp() {
                                     id="combo-box-demo"
                                     options={leaseResData}
                                     getOptionLabel={(option) => option?.title}
-                                    sx={{width:"400px"}}
+                                    sx={{ width: "400px" }}
                                     renderInput={(params) => <TextField  {...params} label="Lease Type" />}
                                 />
                             ) : (<></>)}
@@ -265,64 +283,96 @@ export default function AddComp() {
                                     id="combo-box-demo"
                                     options={CreditResdata}
                                     getOptionLabel={(option) => option?.title}
-                                    sx={{width:"400px"}}
+                                    sx={{ width: "400px" }}
                                     renderInput={(params) => <TextField  {...params} label="Credit " />}
                                 />
                             ) : (<></>)}
                         </Box>
                         <Box>
-                            <TextField label="NOI*" sx={{width:"400px"}} />
+                            <TextField label="Crop ffranchisee unitcount" sx={{ width: "400px" }} />
+                        </Box>
+                        <Box>
+                            <TextField label="NOI*" sx={{ width: "400px" }} />
+                        </Box>
+                        <Box>
+                            <TextField label="CLOSING NOI*" sx={{ width: "400px" }} />
+                        </Box>
+                        <Box>
+                            <TextField type="date" label="Lease Start" focused sx={{ width: "400px" }} />
+                        </Box>
+                        <Box>
+                            <TextField type="date" label="Lease End" focused sx={{ width: "400px" }} />
+                        </Box>
+                        <Box>
+                            <TextField type="date" label="List Date" focused sx={{ width: "400px" }} />
                         </Box>
 
                         <Box>
-                            <TextField type="date" label="Lease Start" focused sx={{width:"400px"}} />
+                            <TextField type="date" label="sold Date" focused sx={{ width: "400px" }} />
                         </Box>
 
-                        <Box>
-                            <TextField type="date" label="Lease End" focused sx={{width:"400px"}} />
-                        </Box>
+
+
 
 
                     </Grid>
 
                     <Grid item xs={6} className={styles?.form1}>
                         <Box>
-                            <TextField label="Units Of tenants"  sx={{width:"400px"}} />
+                            <TextField label="Units Of tenants" sx={{ width: "400px" }} />
                         </Box>
                         <Box>
-                            <TextField label="Vacancy" sx={{width:"400px"}}/>
+                            <TextField label="Vacancy" sx={{ width: "400px" }} />
                         </Box>
                         <Box>
-                            <TextField label="Traffic" sx={{width:"400px"}}/>
+                            <TextField label="Traffic" sx={{ width: "400px" }} />
                         </Box>
                         <Box>
-                            <TextField label="Pop 1 Mile"sx={{width:"400px"}} />
+                            <TextField label="Pop 1 Mile" sx={{ width: "400px" }} />
                         </Box>
                         <Box>
-                            <TextField label="Pop 3 Mile" sx={{width:"400px"}}/>
+                            <TextField label="Pop 3 Mile" sx={{ width: "400px" }} />
                         </Box>
                         <Box>
-                            <TextField label="Pop 5 Mile" sx={{width:"400px"}} />
-                        </Box>
-
-                        <Box>
-                            <TextField label="HH 1 Mile" sx={{width:"400px"}} />
-                        </Box>
-                        <Box>
-                            <TextField label="HH 3 Mile"  sx={{width:"400px"}}/>
-                        </Box>
-                        <Box>
-                            <TextField label="HH 5 Mile" sx={{width:"400px"}}/>
-                        </Box>
-                        <Box>
-                            <TextField label="List Cap Rate" sx={{width:"400px"}}/>
-                        </Box>
-                        <Box>
-                            <TextField label="Close Cap Rate" sx={{width:"400px"}}/>
+                            <TextField label="Pop 5 Mile" sx={{ width: "400px" }} />
                         </Box>
 
                         <Box>
-                            <Button >SUBMIT</Button>
+                            <TextField label="HH 1 Mile" sx={{ width: "400px" }} />
+                        </Box>
+                        <Box>
+                            <TextField label="HH 3 Mile" sx={{ width: "400px" }} />
+                        </Box>
+                        <Box>
+                            <TextField label="HH 5 Mile" sx={{ width: "400px" }} />
+                        </Box>
+                        <Box>
+                            <TextField label="Size(S/F)" sx={{ width: "400px" }} />
+                        </Box>
+                        <Box>
+                            <TextField label="Price(S/F)" sx={{ width: "400px" }} />
+                        </Box>
+                        <Box>
+                            <TextField label="Rent(S/F)" sx={{ width: "400px" }} />
+                        </Box>
+                        <Box>
+                            <TextField label="Lot/AC" sx={{ width: "400px" }} />
+                        </Box>
+                        <Box>
+                            <TextField label="Year Built" sx={{ width: "400px" }} />
+                        </Box>
+                        <Box>
+                            <TextField label="Price per Unit" sx={{ width: "400px" }} />
+                        </Box>
+                        <Box>
+                            <TextField label="Enter Azumtions" sx={{ width: "400px" }} />
+                        </Box>
+                        <Box>
+                            <TextField label="Sales" sx={{ width: "400px" }} />
+                        </Box>
+
+                        <Box>
+                            <Button type="submit">SUBMIT</Button>
                         </Box>
                     </Grid>
 
@@ -330,6 +380,7 @@ export default function AddComp() {
                 </Grid>
 
             </Box>
+            </form>
 
         </>
 

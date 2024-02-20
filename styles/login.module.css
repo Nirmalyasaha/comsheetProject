@@ -1,4 +1,26 @@
 .loginform{
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width:30%;
+    margin: auto;
+    background-color: rgb(227, 231, 231);
+    border-radius: 10px;
+    box-shadow: 6px 8px 8px rgb(87, 84, 84);
+
+}
+.formgroup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+
+}
+.btn{
+    background: #000080;
+    border-radius: 45px;
+    padding: 15px 34px;
+    margin-top: 10px;
 }

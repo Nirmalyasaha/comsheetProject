@@ -20,7 +20,8 @@ export const endpoint = {
         tenantBrand: "/tenant-brand/lists",
         region: "/region/list",
         lease: "/lease/list",
-        creadit:"/credit/list"
+        creadit:"/credit/list",
+        add:"/property/add"
 
 
     }
