@@ -9,8 +9,9 @@ import { BrandTypes } from "@/interFace/Brand"
 import { Regiontypes } from "@/interFace/Region"
 import { LeaseTypes } from "@/interFace/leaseType"
 import { CreditTypes } from "@/interFace/CreditList"
-import { InputData } from "@/typeScript/type/add.type"
 import { AddCompTypes } from "@/interFace/addCompo"
+import { InputType } from "zlib"
+import { InputsValue } from "@/typeScript/type/add.type"
 
 
 
@@ -62,10 +63,10 @@ export const FetchCreaditList=async()=>{
     return res?.data.data
 }
 
-//// addd page func-----
+//// addd page func -----
 
-export const AddComp=async (payload:InputData,data:AddCompTypes)=>{
-    const res=await axiosInstance.post<AddCompTypes>(endpoint.CompsAdd.add,payload,data)
+export const AddCompData=async (data:InputsValue)=>{
+    const res=await axiosInstance.post(endpoint.CompsAdd.add,data)
     console.log("add res",res)
     return res
 

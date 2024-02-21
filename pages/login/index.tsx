@@ -42,9 +42,7 @@ export default function LogIN() {
         // token colect
       }
 
-
     })
-
       .catch((error) => {
         console.log("error", error)
 

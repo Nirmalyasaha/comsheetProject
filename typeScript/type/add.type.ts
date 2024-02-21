@@ -1,74 +1,49 @@
-export type InputData= {
-    
-    user_id: string
-    property_type_id: string
-    sub_type_id: string
-    tenancy_id: string
-    unique_id: number
-    property_name: string
-    tenant_brand_id: string[]
-    address: string
-    address_line_2: string
-    lat: number
-    long: number
-    city: string
-    country: string
-    state_id: string
-    region_id: string[]
-    zipcode: string
-    groundLease: string
-    price: number
-    sold_price: number
-    cap: number
-    closed_cap: number
-    stories: number
-    term: any
-    lease_type_id: string
-    credit_id: string[]
-    corp_franchisee_unit_count: string
-    days_to_close: any
-    list_date: string
-    list_closing_date: string
-    noi: number
-    closing_noi: number
-    increases: string
-    lease_start: string
-    lease_end: string
-    options: string
-    reported_sales: number
-    assumptions: string[]
-    tenant_unit: string
-    vacancy_perc: number
-    traffic: any
-    pop_1_mile: number
-    pop_3_mile: number
-    pop_5_mile: number
-    hh_1_mile: number
-    hh_3_mile: number
-    hh_5_mile: number
-    size_sqft: number
-    per_sqft_price: number
-    per_sqft_rent_price: number
-    rent_bump: string
-    rent_bump_text: string
-    lot_ac: number
-    year_built: string
-    county: string
-    unit_price: number
-    notes_id: string[]
-    om: string
-    pictures: any[]
-    broker_name: string
-    company: string
-    email: string
-    status: string
-    request_status: string
-    isDeleted: boolean
-    isUpdated: boolean
-    updated_by_user_id: string
-    update_date: string
-    _id: string
-    createdAt: string
-    updatedAt: string
+export type InputsValue = {
+
+    property_type_id: string,
+    sub_type_id: string,
+    tenancy_id: string,
+    property_name: String,
+    address: string,
+    city: string,
+    state_id: string,
+    country:string
+    tenant_brand_id: string[],
+    region_id: string[],
+    zipcode: string,
+    cap: number,
+    closed_cap: number,
+    price: number,
+    sold_price: number,
+    lease_type_id:string,
+    credit_id:string[],
+    corp_franchisee_unit_count:string,
+    noi: number,
+    closing_noi: number,
+    rent_bump:string,
+    rent_bump_text:string,
+    lease_start:string,
+    lease_end:string,
+    list_date:string,
+    list_closing_date:string,
+    tenant_unit:string,
+    vacancy_perc:number,
+    traffic:null,
+    pop_1_mile:number,
+    pop_3_mile:number,
+    pop_5_mile:number,
+    hh_1_mile:number,
+    hh_3_mile:number,
+    hh_5_mile:number,
+    size_sqft:number,
+    per_sqft_price:number,
+    per_sqft_rent_price:number,
+    lot_ac:number,
+    year_built:string,
+    unit_price:number,
+    assumptions:any[],
+    reported_sales:number,
+    lat:number,
+    long:number
 
 }
